@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import http, { isCancel } from "../services/http";
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface FetchGameResponse {
