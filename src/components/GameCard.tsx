@@ -11,7 +11,7 @@ const GameCard = ({ game }: Props) => {
 
   return (
     <Card borderRadius={10} overflow={"hidden"}>
-      <Image src={background_image} />
+      <Image height="250px" objectFit="cover" src={background_image} />
       <CardBody>
         <Heading fontSize="2xl">{name}</Heading>
         <PlatformIconList platforms={parent_platforms} />
