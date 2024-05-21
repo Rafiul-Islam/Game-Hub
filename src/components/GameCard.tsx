@@ -12,7 +12,7 @@ const GameCard = ({ game }: Props) => {
   const { name, background_image, parent_platforms, metacritic } = game;
 
   return (
-    <Card borderRadius={10} overflow={"hidden"}>
+    <Card>
       <Image
         height="250px"
         objectFit="cover"
