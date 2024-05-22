@@ -1,4 +1,4 @@
-import axios, { isCancel } from "axios";
+import axios, { isCancel, AxiosRequestConfig } from "axios";
 
 const http = axios.create({
   baseURL: "https://api.rawg.io/api",
@@ -8,5 +8,6 @@ const http = axios.create({
 });
 
 export { isCancel };
+export type { AxiosRequestConfig };
 
 export default http;
