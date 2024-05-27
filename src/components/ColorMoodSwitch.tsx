@@ -10,7 +10,9 @@ const ColorMoodSwitch = () => {
           isChecked={colorMode === "dark"}
           onChange={toggleColorMode}
         />
-        <Text style={{ textTransform: "capitalize" }}>{colorMode} Mood</Text>
+        <Text textTransform="capitalize" whiteSpace="nowrap">
+          {colorMode} Mood
+        </Text>
       </HStack>
     </>
   );
