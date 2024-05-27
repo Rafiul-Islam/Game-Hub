@@ -1,4 +1,11 @@
-import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  GridItem,
+  HStack,
+  Show,
+  useColorMode,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import GameGrid from "./components/GameGrid";
@@ -18,6 +25,7 @@ export interface GameQuery {
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const { colorMode } = useColorMode();
 
   return (
     <main>
@@ -31,7 +39,15 @@ const App = () => {
           lg: "260px 1fr",
         }}
       >
-        <GridItem area="nav">
+        <GridItem
+          area="nav"
+          sx={{
+            position: "sticky",
+            top: "0",
+            zIndex: "1000",
+          }}
+          bgColor={colorMode === "dark" ? "gray.800" : "white"}
+        >
           <Navbar
             onSearch={(searchText) =>
               setGameQuery({ ...gameQuery, searchText })
@@ -47,9 +63,9 @@ const App = () => {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <Box mx="10px">
+          <Box mx="10px" mt="15px">
             <GameHeading gameQuery={gameQuery} />
-            <HStack spacing={4} marginBottom={5}>
+            <HStack spacing={4} my={5}>
               <PlatfromSelector
                 selectedPlatform={gameQuery.platform}
                 onSelectPlatform={(platform) =>
