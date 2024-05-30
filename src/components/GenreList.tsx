@@ -5,7 +5,6 @@ import {
   Image,
   List,
   ListItem,
-  Text,
 } from "@chakra-ui/react";
 import _ from "lodash";
 import useGenres, { Genre } from "../hooks/useGenres";
