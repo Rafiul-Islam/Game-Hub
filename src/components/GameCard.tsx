@@ -14,7 +14,7 @@ const GameCard = ({ game }: Props) => {
     game;
 
   return (
-    <Card>
+    <Card shadow="md" _hover={{ opacity: 0.7 }}>
       <Image
         height="250px"
         objectFit="cover"

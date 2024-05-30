@@ -7,6 +7,7 @@ const config: ThemeConfig = {
 const theme = extendTheme({
   config,
   colors: {
+    white: "#fafafa",
     gray: {
       50: "#f9f9f9",
       100: "#ededed",
