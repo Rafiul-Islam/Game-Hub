@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import http, { AxiosRequestConfig, isCancel } from "../services/http";
 
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   count: number;
   results: T[];
 }
