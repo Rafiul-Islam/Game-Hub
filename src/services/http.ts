@@ -1,5 +1,10 @@
 import axios, { isCancel, AxiosRequestConfig } from "axios";
 
+export interface FetchResponse<T> {
+  count: number;
+  results: T[];
+}
+
 const http = axios.create({
   baseURL: "https://api.rawg.io/api",
   params: {
