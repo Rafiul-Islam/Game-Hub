@@ -1,4 +1,4 @@
-import { Button, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Box, Button, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import _ from "lodash";
 import { Fragment } from "react";
 import { GameQuery } from "../App";
@@ -12,24 +12,20 @@ interface Props {
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const pageSize = 10;
   const {
     data: games,
     error,
     isLoading,
     fetchNextPage,
     isFetchingNextPage,
-  } = useGames({ gameQuery, pageSize });
+    hasNextPage,
+  } = useGames(gameQuery);
   const skeletons = _.range(8);
 
   if (error) return <Text>{error.message}</Text>;
   return (
-    <>
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        spacing={4}
-        padding="10px"
-      >
+    <Box padding="10px">
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={4}>
         {isLoading &&
           skeletons.map((sl) => (
             <GameCardContainer key={sl}>
@@ -47,10 +43,10 @@ const GameGrid = ({ gameQuery }: Props) => {
         ))}
       </SimpleGrid>
       {isFetchingNextPage && <Spinner size="xl" />}
-      <Button ml="10px" marginBottom="30px" onClick={() => fetchNextPage()}>
-        Load More....
-      </Button>
-    </>
+      {hasNextPage && (
+        <Button onClick={() => fetchNextPage()}>Load More....</Button>
+      )}
+    </Box>
   );
 };
 

@@ -13,17 +13,12 @@ export interface Game {
   rating_top: number;
 }
 
-interface Props {
-  pageSize: number;
-  gameQuery: GameQuery;
-}
-
 const httpService = new HttpServices<Game>("/games");
 
-const useGames = ({ gameQuery, pageSize }: Props) =>
+const useGames = (gameQuery: GameQuery) =>
   useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
-    queryFn: ({ pageParam }) =>
+    queryFn: ({ pageParam = 1 }) =>
       httpService.getAll({
         params: {
           genres: gameQuery.genre?.id,
@@ -31,12 +26,11 @@ const useGames = ({ gameQuery, pageSize }: Props) =>
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
           page: pageParam,
-          per_page: pageSize,
         },
       }),
     staleTime: 5 * 60 * 1000,
     getNextPageParam: (lastPage, allPages) =>
-      lastPage.results.length > 0 ? allPages.length + 1 : undefined,
+      lastPage.next ? allPages.length + 1 : undefined,
     keepPreviousData: true,
   });
 
