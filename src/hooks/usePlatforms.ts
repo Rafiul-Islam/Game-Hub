@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import HttpServices from "../services/http";
-import platforms from "../data/platforms";
 import ms from "ms";
+import platforms from "../data/platforms";
+import HttpServices from "../services/http";
 
 export interface Platform {
   id: number;

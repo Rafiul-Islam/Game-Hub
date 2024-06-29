@@ -1,9 +1,8 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { GameQuery } from "../App";
-import { Platform } from "./usePlatforms";
-import { FetchResponse } from "../services/http";
-import HttpServices from "../services/http";
 import ms from "ms";
+import { GameQuery } from "../App";
+import HttpServices, { FetchResponse } from "../services/http";
+import { Platform } from "./usePlatforms";
 
 export interface Game {
   id: number;
