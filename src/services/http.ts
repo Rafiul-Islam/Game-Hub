@@ -1,4 +1,4 @@
-import axios, { isCancel, AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   count: number;
@@ -12,7 +12,17 @@ const http = axios.create({
   },
 });
 
-export { isCancel };
-export type { AxiosRequestConfig };
+class HttpServices<T> {
+  apiEndPoint = "";
 
-export default http;
+  constructor(apiEndPoint: string) {
+    this.apiEndPoint = apiEndPoint;
+  }
+
+  getAll = (config?: AxiosRequestConfig) =>
+    http
+      .get<FetchResponse<T>>(this.apiEndPoint, config)
+      .then((res) => res.data);
+}
+
+export default HttpServices;
