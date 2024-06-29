@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { GameQuery } from "../App";
-import { Platform } from "./usePlatform";
+import { Platform } from "./usePlatforms";
 import { FetchResponse } from "../services/http";
 import HttpServices from "../services/http";
 
