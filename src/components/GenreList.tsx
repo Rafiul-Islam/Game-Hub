@@ -10,14 +10,14 @@ import _ from "lodash";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import GenreSkeleton from "./GenreSkeleton";
+import useGameStore from "../store";
 
-interface Props {
-  selectedGenreId?: number;
-  onSelectGenre: (genreId: number) => void;
-}
-
-const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
+const GenreList = () => {
   const { data: geners, isLoading, error } = useGenres();
+  const { genreId, onSelectGenre } = useGameStore((s) => ({
+    genreId: s.gameQuery.genreId,
+    onSelectGenre: s.onSelectGenre,
+  }));
 
   const skeletons = _.range(20);
 
@@ -46,7 +46,7 @@ const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
                 src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
-                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
+                fontWeight={genre.id === genreId ? "bold" : "normal"}
                 whiteSpace="normal"
                 textAlign="left"
                 variant="link"
