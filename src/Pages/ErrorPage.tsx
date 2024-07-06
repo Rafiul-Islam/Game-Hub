@@ -8,7 +8,7 @@ const ErrorPage = () => {
   return (
     <>
       <Navbar />
-      <Container maxW="1200px" mt="30px">
+      <Container maxW="1500px" mt="30px">
         <Heading fontSize="5xl">Opps</Heading>
         <Text fontSize="xl">
           {isRouteErrorResponse(error)

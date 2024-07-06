@@ -24,6 +24,9 @@ class HttpServices<T> {
     http
       .get<FetchResponse<T>>(this.apiEndPoint, config)
       .then((res) => res.data);
+
+  getOne = (id: string | number) =>
+    http.get<T>(`${this.apiEndPoint}/${id}`).then((res) => res.data);
 }
 
 export default HttpServices;
