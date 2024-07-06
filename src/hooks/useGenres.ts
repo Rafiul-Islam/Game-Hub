@@ -2,12 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
 import genres from "../data/genres";
 import HttpServices from "../services/http";
-
-export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
+import { Genre } from "../entities/Genre";
 
 const httpService = new HttpServices<Genre>("/genres");
 

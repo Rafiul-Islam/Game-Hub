@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import HttpServices from "../services/http";
-import { Game } from "./useGames";
+import { Game } from "../entities/Game";
 
 const httpService = new HttpServices<Game>("/games");
 
