@@ -19,7 +19,7 @@ const HomePage = () => {
         }}
       >
         <Show above="lg">
-          <GridItem area="aside" padding={5}>
+          <GridItem area="aside" paddingY={5}>
             <GenreList />
           </GridItem>
         </Show>
